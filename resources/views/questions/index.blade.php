@@ -25,7 +25,7 @@
                             <div class="flex items-center justify-between h-8 sm:ml-4">
                                 <div class="h-4 flex items-center">
                                     <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png"
-                                        alt="" class="w-full h-full object-contain block mr-1">
+                                        alt="" class="w-4 h-full object-contain block mr-1">
                                     <p class="block text-sm">{{ $question->reward_coin }}</p>
                                 </div>
                             </div>
