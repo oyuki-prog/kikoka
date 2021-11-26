@@ -1,0 +1,18 @@
+@charset "UTF-8";
+
+.acd-check{
+    display: none;
+}
+
+.acd-content{
+    /* border: 1px solid #333; */
+    height: 0;
+    opacity: 0;
+    /* transition: .5s; */
+    visibility: hidden;
+}
+.acd-check:checked + .acd-label + .acd-content{
+    height: auto;
+    opacity: 1;
+    visibility: visible;
+}
