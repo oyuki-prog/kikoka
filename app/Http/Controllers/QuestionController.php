@@ -63,7 +63,11 @@ class QuestionController extends Controller
         $question->due_date = $request->due_date . ':00';
 
         $user = User::find(Auth::id());
-        $user->coin -= $request->reward_coin * 1.1;
+        if ($request->urgent == 1) {
+            $user->coin -= $request->reward_coin * 1.2;
+        } else {
+            $user->coin -= $request->reward_coin * 1.1;
+        }
         DB::beginTransaction();
         try {
             $question->save();
