@@ -39,6 +39,6 @@
     </div>
     <a href="{{ route('questions.create') }}"
         class="fixed bottom-8 right-8 bg-green-400 h-12 w-12 rounded-full text-white flex items-center justify-center opacity-80 sm:hidden">
-        <p class="block font-extrabold ">＋</p>
+        <p class="block font-extrabold ">？</p>
     </a>
 </x-app-layout>

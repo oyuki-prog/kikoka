@@ -10897,7 +10897,7 @@ return jQuery;
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/
+/******/ 	
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -10911,14 +10911,14 @@ return jQuery;
 /******/ 			// no module.loaded needed
 /******/ 			exports: {}
 /******/ 		};
-/******/
+/******/ 	
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/
+/******/ 	
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/
+/******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
@@ -10940,6 +10940,30 @@ $(function () {
 
   $('[data-group]').change(function () {
     DoSum($(this));
+  });
+});
+$(function () {
+  $('#reward_coin').change(function () {
+    var val = $(this).val();
+    var multiply = 1.1;
+
+    if ($('#urgent').prop("checked") == true) {
+      multiply = 1.2;
+    }
+
+    $('#Total').text(val * multiply);
+  });
+});
+$(function () {
+  $('#urgent').change(function () {
+    var val = $('#reward_coin').val();
+    var multiply = 1.1;
+
+    if ($('#urgent').prop("checked") == true) {
+      multiply = 1.2;
+    }
+
+    $('#Total').text(val * multiply);
   });
 });
 })();

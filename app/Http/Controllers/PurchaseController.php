@@ -19,4 +19,21 @@ class PurchaseController extends Controller
 
         return redirect()->route('questions.index')->with('message', "{$request->coin}コインを購入しました");
     }
+
+    public function giftcard() {
+        return view('giftcard');
+    }
+
+    public function thanks() {
+        return view('thanks');
+    }
+
+    public function exchange(Request $request) {
+        $user = User::find(Auth::id());
+        $coin = $request->coin;
+        $user->coin -= $coin;
+        $user->save();
+
+        return redirect()->route('thanks',compact('coin'));
+    }
 }

@@ -24,7 +24,7 @@
                         <p class="text-xs">{{ $question->reward_coin }}</p>
                     </div>
                 </div>
-                <p class="text-xs leading-5 block mb-4">{{ $question->body }}</p>
+                <p class="text-xs leading-5 block mb-4">{!! nl2br(e($question->body)) !!}</p>
                 <hr>
                 <div class="flex items-center justify-between">
                     <p class="my-4 block">質問への回答</p>
@@ -45,7 +45,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="text-xs leading-5">{{ $answer->body }}</p>
+                        <p class="text-xs leading-5">{!! nl2br(e($answer->body)) !!}</p>
                     </div>
                 @endforeach
                 @if (Auth::check() && $question->user != Auth::user())

@@ -71,6 +71,10 @@
                                     {{ __('Profile') }}
                                 </x-jet-dropdown-link>
 
+                                <x-jet-dropdown-link href="{{ route('giftcard') }}">
+                                    {{ __('ギフトカード') }}
+                                </x-jet-dropdown-link>
+
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
                                     <x-jet-dropdown-link href="{{ route('api-tokens.index') }}">
                                         {{ __('API Tokens') }}
@@ -97,11 +101,13 @@
             <div class="-mr-2 flex items-center sm:hidden">
                 @if (Auth::check())
                     <div class="flex items-center">
-                        <div class="w-4 h-4">
-                            <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
-                                class="w-full h-full object-contain block mr-2">
-                        </div>
-                        <p class="block text-sm">{{ Auth::user()->coin }}</p>
+                        <a href="{{ route('purchase') }}" class="block flex items-center">
+                            <div class="w-4 h-4">
+                                <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
+                                    class="w-full h-full object-contain block">
+                            </div>
+                            <p class="block ml-2">{{ Auth::user()->coin }}</p>
+                        </a>
                     </div>
                 @endif
                 <button @click="open = ! open"
@@ -120,11 +126,24 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
-        </div>
+        @if (Auth::check())
+            <div class="pt-2 pb-3 space-y-1">
+                <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
+                    {{ __('Dashboard') }}
+                </x-jet-responsive-nav-link>
+            </div>
+        @else
+            <div class="pt-2 pb-3 space-y-1">
+                <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                    {{ __('ログイン') }}
+                </x-jet-responsive-nav-link>
+            </div>
+            <div class="pt-2 pb-3 space-y-1">
+                <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                    {{ __('新規登録') }}
+                </x-jet-responsive-nav-link>
+            </div>
+        @endif
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">

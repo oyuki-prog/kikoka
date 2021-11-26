@@ -56,3 +56,15 @@ Route::get('purchase', [PurchaseController::class, 'purchase'])
 Route::patch('purchase', [PurchaseController::class, 'buy'])
     ->middleware('auth')
     ->name('buy');
+
+Route::get('giftcard', [PurchaseController::class, 'giftcard'])
+    ->middleware('auth')
+    ->name('giftcard');
+
+Route::patch('giftcard', [PurchaseController::class, 'exchange'])
+    ->middleware('auth')
+    ->name('exchange');
+
+Route::get('thanks', [PurchaseController::class, 'thanks'])
+    ->middleware('auth')
+    ->name('thanks');

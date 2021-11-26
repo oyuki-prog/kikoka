@@ -15,3 +15,25 @@ $(function(){
       DoSum($(this));
   });
 });
+
+$(function(){
+  $('#reward_coin').change(function() {
+      var val = $(this).val();
+      var multiply = 1.1
+      if ($('#urgent').prop("checked") == true) {
+        multiply = 1.2
+      }
+      $('#Total').text(val * multiply);
+  })
+});
+
+$(function(){
+  $('#urgent').change(function() {
+      var val = $('#reward_coin').val();
+      var multiply = 1.1
+      if ($('#urgent').prop("checked") == true) {
+        multiply = 1.2
+      }
+      $('#Total').text(val * multiply);
+  })
+});
