@@ -12,7 +12,7 @@
     <div class="py-12">
         <div class="max-w-screen-xl mx-auto sm:px-6 lg:px-8">
             <x-errors :errors="$errors" />
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg py-8 px-4">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg pt-8 px-4">
                 <div class="mx-auto max-w-md flex items-center justify-between mb-8">
                     <div class="flex items-center">
                         <div class="w-4 h-4">

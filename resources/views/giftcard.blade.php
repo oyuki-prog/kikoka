@@ -12,7 +12,7 @@
     <div class="py-12">
         <div class="max-w-screen-xl mx-auto sm:px-6 lg:px-8">
             <x-errors :errors="$errors" />
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg py-8">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg pt-8 px-4">
                 <div class="mx-auto max-w-md flex items-center justify-between mb-8">
                     <div class="flex items-center">
                         <div class="w-4 h-4">
@@ -20,7 +20,7 @@
                                 class="w-full h-full object-contain block mr-2">
                         </div>
                         <p class="block">1000</p>
-                        <p class="block ml-4">￥1000円分のギフトカード</p>
+                        <p class="block ml-4">￥1000円分</p>
                     </div>
                     <form action="{{ route('exchange') }}" method="POST">
                         @csrf
@@ -36,7 +36,7 @@
                                 class="w-full h-full object-contain block mr-2">
                         </div>
                         <p class="block">2000</p>
-                        <p class="block ml-4">￥2000円分のギフトカード</p>
+                        <p class="block ml-4">￥2000円分</p>
                     </div>
                     <form action="{{ route('exchange') }}" method="POST">
                         @csrf
@@ -52,7 +52,7 @@
                                 class="w-full h-full object-contain block mr-2">
                         </div>
                         <p class="block">5000</p>
-                        <p class="block ml-4">￥5000塩分のギフトカード</p>
+                        <p class="block ml-4">￥5000塩分</p>
                     </div>
                     <form action="{{ route('exchange') }}" method="POST">
                         @csrf
@@ -68,7 +68,7 @@
                                 class="w-full h-full object-contain block mr-2">
                         </div>
                         <p class="block">10000</p>
-                        <p class="block ml-4">￥10000円分のギフトカード</p>
+                        <p class="block ml-4">￥10000円分</p>
                     </div>
                     <form action="{{ route('exchange') }}" method="POST">
                         @csrf
