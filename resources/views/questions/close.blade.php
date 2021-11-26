@@ -19,11 +19,11 @@
                         <div class="h-4 flex items-center">
                             <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
                                 class="h-full object-contain block mr-2">
-                            <p class="text-sm">{{ $question->reward_coin }}</p>
+                            <p class="text-sm" id="reward">{{ $question->reward_coin }}</p>
                         </div>
                     </div>
 
-                    <form action="{{ route('questions.divide', $question) }}" method="POST">
+                    <form action="{{ route('questions.divide', $question) }}" method="POST" id="form">
                         @csrf
                         @method('PATCH')
 
@@ -54,12 +54,24 @@
                             </div>
                         @endforeach
 
-                        @can('update', $question)
-                            <input type="submit" value="分配する">
-                        @endcan
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    @can('update', $question)
+        <div class="h-16 fixed bottom-0 w-full bg-green-200 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <div class="flex items-center h-8">
+                <p class="block text-base">残り</p>
+                <img src="{{ Storage::url('/default_image/coin.png') }}" alt="" class="h-8 object-contain block mr-2">
+                <p id="SumTotal" class="text-base">{{ $question->reward_coin }}</p>
+            </div>
+            <input type="submit" value="確定" form="form" class="block bg-blue-300 hover:bg-blue-400 px-2 py-1 rounded">
+        </div>
+    @endcan
+
+    <x-slot name="js">
+        <script src="{{ mix('js/total.js') }}"></script>
+    </x-slot>
 </x-app-layout>

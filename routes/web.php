@@ -52,3 +52,7 @@ Route::resource('questions.answers', AnswerController::class)
 Route::get('purchase', [PurchaseController::class, 'purchase'])
     ->middleware('auth')
     ->name('purchase');
+
+Route::patch('purchase', [PurchaseController::class, 'buy'])
+    ->middleware('auth')
+    ->name('buy');

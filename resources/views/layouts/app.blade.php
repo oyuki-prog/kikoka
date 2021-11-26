@@ -27,7 +27,7 @@
 <body class="font-sans antialiased">
     <x-jet-banner />
 
-    <div class="min-h-screen bg-gray-100">
+    <div class="min-h-screen bg-gray-100 mt-16">
         @livewire('navigation-menu')
 
         <!-- Page Heading -->
@@ -46,6 +46,10 @@
     </div>
 
     @stack('modals')
+
+    @if (isset($js))
+        {{ $js }}
+    @endif
 
     @livewireScripts
 </body>

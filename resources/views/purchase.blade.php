@@ -12,14 +12,86 @@
     <div class="py-12">
         <div class="max-w-screen-xl mx-auto sm:px-6 lg:px-8">
             <x-errors :errors="$errors" />
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg">
-                <div class="flex items-center">
-                    <div class="w-4 h-4">
-                        <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
-                            class="w-full h-full object-contain block mr-2">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg py-8">
+                <div class="mx-auto max-w-md flex items-center justify-between mb-8">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4">
+                            <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
+                                class="w-full h-full object-contain block mr-2">
+                        </div>
+                        <p class="block">100</p>
+                        <p class="block ml-4">￥120</p>
                     </div>
-                    <p>100</p>
-
+                    <form action="{{ route('buy') }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <input type="hidden" name="coin" value="100">
+                        <input type="submit" value="購入" class="bg-blue-400 py-1 px-2 rounded">
+                    </form>
+                </div>
+                <div class="mx-auto max-w-md flex items-center justify-between mb-8">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4">
+                            <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
+                                class="w-full h-full object-contain block mr-2">
+                        </div>
+                        <p class="block">200</p>
+                        <p class="block ml-4">￥240</p>
+                    </div>
+                    <form action="{{ route('buy') }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <input type="hidden" name="coin" value="200">
+                        <input type="submit" value="購入" class="bg-blue-400 py-1 px-2 rounded">
+                    </form>
+                </div>
+                <div class="mx-auto max-w-md flex items-center justify-between mb-8">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4">
+                            <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
+                                class="w-full h-full object-contain block mr-2">
+                        </div>
+                        <p class="block">500</p>
+                        <p class="block ml-4">￥580</p>
+                    </div>
+                    <form action="{{ route('buy') }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <input type="hidden" name="coin" value="500">
+                        <input type="submit" value="購入" class="bg-blue-400 py-1 px-2 rounded">
+                    </form>
+                </div>
+                <div class="mx-auto max-w-md flex items-center justify-between mb-8">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4">
+                            <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
+                                class="w-full h-full object-contain block mr-2">
+                        </div>
+                        <p class="block">1000</p>
+                        <p class="block ml-4">￥1150</p>
+                    </div>
+                    <form action="{{ route('buy') }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <input type="hidden" name="coin" value="1000">
+                        <input type="submit" value="購入" class="bg-blue-400 py-1 px-2 rounded">
+                    </form>
+                </div>
+                <div class="mx-auto max-w-md flex items-center justify-between mb-8">
+                    <div class="flex items-center">
+                        <div class="w-4 h-4">
+                            <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
+                                class="w-full h-full object-contain block mr-2">
+                        </div>
+                        <p class="block">10000</p>
+                        <p class="block ml-4">￥100</p>
+                    </div>
+                    <form action="{{ route('buy') }}" method="POST">
+                        @csrf
+                        @method('PATCH')
+                        <input type="hidden" name="coin" value="10000">
+                        <input type="submit" value="購入" class="bg-blue-400 py-1 px-2 rounded">
+                    </form>
                 </div>
             </div>
         </div>
