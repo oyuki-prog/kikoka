@@ -9,23 +9,22 @@
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
-                @if (Auth::check())
-                    <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('questions.index') }}"
-                            :active="request()->routeIs('questions.index')">
-                            {{ __('急募') }}
-                        </x-jet-nav-link>
-                        <x-jet-nav-link href="{{ route('questions.new') }}"
-                            :active="request()->routeIs('questions.new')">
-                            {{ __('新着') }}
-                        </x-jet-nav-link>
-                        <x-jet-nav-link href="{{ route('questions.popular') }}"
-                            :active="request()->routeIs('questions.popular')">
-                            {{ __('人気') }}
-                        </x-jet-nav-link>
-                    </div>
-                @endif
+
+                <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('questions.index') }}"
+                        :active="request()->routeIs('questions.index')">
+                        {{ __('急募') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('questions.new') }}" :active="request()->routeIs('questions.new')">
+                        {{ __('新着') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('questions.popular') }}"
+                        :active="request()->routeIs('questions.popular')">
+                        {{ __('人気') }}
+                    </x-jet-nav-link>
+                </div>
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -103,6 +102,11 @@
                             </x-slot>
                         </x-jet-dropdown>
                     </div>
+                @else
+                    <a href="{{ route('login') }}"
+                        class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition'">
+                        {{ __('Log in') }}
+                    </a>
                 @endif
             </div>
 
