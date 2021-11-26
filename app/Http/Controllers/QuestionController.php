@@ -24,6 +24,18 @@ class QuestionController extends Controller
         return view('questions.index', compact('questions'));
     }
 
+    public function new()
+    {
+        $questions = Question::with('user')->where('open', true)->orderBy('created_at', 'DESC')->simplePaginate(10);
+        return view('questions.index', compact('questions'));
+    }
+
+    public function popular()
+    {
+        $questions = Question::withCount('answers')->where('open', true)->orderBy('answers_count', 'DESC')->simplePaginate(10);
+        return view('questions.index', compact('questions'));
+    }
+
     /**
      * Show the form for creating a new resource.
      *

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserController;
 use App\Models\Answer;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -29,6 +30,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])
 ->get('/dashboard', [UserController::class, 'show']
 )->name('dashboard');
+
+Route::get('questions/new', [QuestionController::class, 'new'])
+    ->name('questions.new');
+
+Route::get('questions/popular', [QuestionController::class, 'popular'])
+    ->name('questions.popular');
 
 Route::resource('questions', QuestionController::class)
     ->middleware('auth')
@@ -68,3 +75,6 @@ Route::patch('giftcard', [PurchaseController::class, 'exchange'])
 Route::get('thanks', [PurchaseController::class, 'thanks'])
     ->middleware('auth')
     ->name('thanks');
+
+Route::get('user/{user}', [UserController::class, 'show'])
+    ->name('user.show');

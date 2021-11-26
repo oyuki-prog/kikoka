@@ -8,7 +8,7 @@
     <div class="py-12">
         <div class="max-w-screen-xl mx-auto sm:px-6 lg:px-8">
             <x-errors :errors="$errors" />
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4 sm:px-8">
                 <p class="block text-sm font-bold my-2">{{ $question->title }}</p>
                 <div class="flex items-center justify-between mb-4 flex-wrap">
                     <div class="flex items-center h-8 flex-1">
@@ -36,19 +36,19 @@
                 @foreach ($answers as $answer)
                     <div class="mb-8">
                         <div class="flex items-center mb-4 flex-wrap">
-                            <div class="flex items-center h-8 flex-1">
+                            <a href="{{ route('user.show', $answer->user) }}" class="flex items-center h-8 flex-1">
                                 <img src="{{ $answer->user->profile_photo_url }}" alt=""
                                     class="w-8 block rounded-full mr-2">
                                 <div>
                                     <p class="text-sm block w-full">{{ $answer->user->name }}</p>
                                     <p class="text-xs block w-full text-gray-500">{{ $answer->elapsed }}</p>
                                 </div>
-                            </div>
+                            </a>
                         </div>
                         <p class="text-xs leading-5">{!! nl2br(e($answer->body)) !!}</p>
                     </div>
                 @endforeach
-                @if (Auth::check() && $question->user != Auth::user())
+                @if (Auth::check() && $question->user != Auth::user() && $question->open == true)
                     <form action="{{ route('questions.answers.store', $question) }}" method="POST">
                         @csrf
                         <div class="flex items-center justify-between mb-2">

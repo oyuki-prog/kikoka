@@ -66,11 +66,10 @@
             <x-jet-input-error for="email" class="mt-2" />
         </div>
 
-        <!-- Email -->
+        <!-- Introduce -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="introduce" value="{{ __('自己紹介') }}" />
-            {{-- <x-jet-input id="introduce" type="text" class="mt-1 block w-full" wire:model.defer="state.email" /> --}}
-            <textarea name="introduce" id="introduce" rows="10" class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm text-xs">{!! nl2br(e(Auth::user()->introduce)) !!}</textarea>
+            <textarea name="introduce" id="introduce" rows="10" class="w-full border-gray-300 focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 rounded-md shadow-sm text-xs" wire:model.defer="state.introduce">{!! nl2br(e(Auth::user()->introduce)) !!}</textarea>
             <x-jet-input-error for="introduce" class="mt-2" />
         </div>
     </x-slot>

@@ -12,8 +12,17 @@
                 @if (Auth::check())
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
+                        <x-jet-nav-link href="{{ route('questions.index') }}"
+                            :active="request()->routeIs('questions.index')">
+                            {{ __('急募') }}
+                        </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('questions.new') }}"
+                            :active="request()->routeIs('questions.new')">
+                            {{ __('新着') }}
+                        </x-jet-nav-link>
+                        <x-jet-nav-link href="{{ route('questions.popular') }}"
+                            :active="request()->routeIs('questions.popular')">
+                            {{ __('人気') }}
                         </x-jet-nav-link>
                     </div>
                 @endif
@@ -29,7 +38,8 @@
                             </div>
                             <p class="block ml-2">{{ Auth::user()->coin }}</p>
                         </a>
-                        <a href="{{ route('questions.create') }}" class="bg-green-300 rounded p-2 block ml-4">質問する</a>
+                        <a href="{{ route('questions.create') }}"
+                            class="bg-green-300 rounded p-2 block ml-4">質問する</a>
                     </div>
 
                     <!-- Settings Dropdown -->
@@ -128,8 +138,17 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         @if (Auth::check())
             <div class="pt-2 pb-3 space-y-1">
-                <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
+                <x-jet-responsive-nav-link href="{{ route('questions.index') }}"
+                    :active="request()->routeIs('questions.index')">
+                    {{ __('急募の質問') }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ route('questions.new') }}"
+                    :active="request()->routeIs('questions.new')">
+                    {{ __('新着の質問') }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ route('questions.popular') }}"
+                    :active="request()->routeIs('questions.popular')">
+                    {{ __('人気の質問') }}
                 </x-jet-responsive-nav-link>
             </div>
         @else

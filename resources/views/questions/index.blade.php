@@ -9,11 +9,11 @@
         <div class="max-w-screen-xl mx-auto sm:px-6 lg:px-8">
             <x-flash :message="session('message')" />
             <x-errors :errors="$errors" />
-            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 pb-12">
+            <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 sm:px-8 pb-12">
                 @foreach ($questions as $question)
                     <div class="mt-12">
                         <div class="h-8 flex items-center justify-between sm:justify-start mb-3">
-                            <div class="flex items-center">
+                            <a href="{{ route('user.show', $question->user) }}" class="flex items-center">
                                 <img src="{{ $question->user->profile_photo_url }}" alt=""
                                     class="h-8 w-8 rounded-full block mr-2">
                                 <div class="h-8">
@@ -21,7 +21,7 @@
                                             class="text-xs text-gray-500 hidden">さんの質問</span></p>
                                     <p class="block text-xs text-gray-500">{{ $question->elapsed }}</p>
                                 </div>
-                            </div>
+                            </a>
                             <div class="flex items-center justify-between h-8 sm:ml-4">
                                 <div class="h-4 flex items-center">
                                     <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
