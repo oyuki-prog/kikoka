@@ -33,13 +33,12 @@
                     <div class="flex items-center">
                         <a href="{{ route('purchase') }}" class="block flex items-center">
                             <div class="w-4 h-4">
-                                <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
-                                    class="w-full h-full object-contain block">
+                                <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png"
+                                    alt="" class="w-full h-full object-contain block">
                             </div>
                             <p class="block ml-2">{{ Auth::user()->coin }}</p>
                         </a>
-                        <a href="{{ route('questions.create') }}"
-                            class="bg-green-300 rounded p-2 block ml-4">質問する</a>
+                        <a href="{{ route('questions.create') }}" class="bg-green-300 rounded p-2 block ml-4">質問する</a>
                     </div>
 
                     <!-- Settings Dropdown -->
@@ -113,8 +112,8 @@
                     <div class="flex items-center">
                         <a href="{{ route('purchase') }}" class="block flex items-center">
                             <div class="w-4 h-4">
-                                <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
-                                    class="w-full h-full object-contain block">
+                                <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png"
+                                    alt="" class="w-full h-full object-contain block">
                             </div>
                             <p class="block ml-2">{{ Auth::user()->coin }}</p>
                         </a>

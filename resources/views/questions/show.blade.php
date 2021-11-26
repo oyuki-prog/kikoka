@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <div class="h-4 flex items-center mb-2">
-                        <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
+                        <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png" alt=""
                             class="h-full object-contain block mr-2">
                         <p class="text-xs">{{ $question->reward_coin }}</p>
                     </div>

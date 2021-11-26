@@ -18,9 +18,9 @@
                 <p>お待ちかねの岐阜とカードだよ</p>
 
                 <div class="h-80 flex items-center w-full">
-                    <img src="{{ Storage::url('default_image/gif.jpeg') }}" alt="" class="h-full object-contain">
+                    <img src="https://gifu.visit-town.com/assets/img/top/map_off.jpg" alt="" class="h-full object-contain">
                     <p class="mx-4 block">&</p>
-                    <img src="{{ Storage::url('default_image/card.jpeg') }}" alt="" class="h-full object-contain">
+                    <img src="https://m.media-amazon.com/images/I/41x4nLWsoUL._AC_.jpg" alt="" class="h-full object-contain">
                 </div>
 
             </div>

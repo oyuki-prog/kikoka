@@ -17,7 +17,7 @@
                     <div class="flex items-center justify-between mb-4">
                         <h1>解答者一覧</h1>
                         <div class="h-4 flex items-center">
-                            <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
+                            <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png" alt=""
                                 class="h-full object-contain block mr-2">
                             <p class="text-sm" id="reward">{{ $question->reward_coin }}</p>
                         </div>
@@ -61,10 +61,12 @@
         </div>
     </div>
     @can('update', $question)
-        <div class="h-16 fixed bottom-0 w-full bg-green-200 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div
+            class="h-16 fixed bottom-0 w-full bg-green-200 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
             <div class="flex items-center h-8">
                 <p class="block text-base">残り</p>
-                <img src="{{ Storage::url('/default_image/coin.png') }}" alt="" class="h-8 object-contain block mr-2">
+                <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png" alt=""
+                    class="h-8 object-contain block mr-2">
                 <p id="SumTotal" class="text-base">{{ $question->reward_coin }}</p>
             </div>
             <input type="submit" value="確定" form="form" class="block bg-blue-300 hover:bg-blue-400 px-2 py-1 rounded">

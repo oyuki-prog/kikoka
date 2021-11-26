@@ -16,7 +16,7 @@
                 <div class="mx-auto max-w-md flex items-center justify-between mb-8">
                     <div class="flex items-center">
                         <div class="w-4 h-4">
-                            <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
+                            <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png" alt=""
                                 class="w-full h-full object-contain block mr-2">
                         </div>
                         <p class="block">100</p>
@@ -32,7 +32,7 @@
                 <div class="mx-auto max-w-md flex items-center justify-between mb-8">
                     <div class="flex items-center">
                         <div class="w-4 h-4">
-                            <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
+                            <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png" alt=""
                                 class="w-full h-full object-contain block mr-2">
                         </div>
                         <p class="block">200</p>
@@ -48,7 +48,7 @@
                 <div class="mx-auto max-w-md flex items-center justify-between mb-8">
                     <div class="flex items-center">
                         <div class="w-4 h-4">
-                            <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
+                            <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png" alt=""
                                 class="w-full h-full object-contain block mr-2">
                         </div>
                         <p class="block">500</p>
@@ -64,7 +64,7 @@
                 <div class="mx-auto max-w-md flex items-center justify-between mb-8">
                     <div class="flex items-center">
                         <div class="w-4 h-4">
-                            <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
+                            <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png" alt=""
                                 class="w-full h-full object-contain block mr-2">
                         </div>
                         <p class="block">1000</p>
@@ -80,7 +80,7 @@
                 <div class="mx-auto max-w-md flex items-center justify-between mb-8">
                     <div class="flex items-center">
                         <div class="w-4 h-4">
-                            <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
+                            <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png" alt=""
                                 class="w-full h-full object-contain block mr-2">
                         </div>
                         <p class="block">10000</p>
