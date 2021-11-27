@@ -31,6 +31,9 @@ class PurchaseController extends Controller
     public function exchange(Request $request) {
         $user = User::find(Auth::id());
         $coin = $request->coin;
+        if ($user->coin < $request->coin) {
+            return back()->withErrors(['error' => 'コインが足りません']);
+        }
         $user->coin -= $coin;
         $user->save();
 

@@ -18,9 +18,9 @@
                 <p>お待ちかねの岐阜とカードだよ</p>
 
                 <div class="h-80 flex items-center w-full">
-                    <img src="https://gifu.visit-town.com/assets/img/top/map_off.jpg" alt="" class="h-full object-contain">
-                    <p class="mx-4 block">&</p>
-                    <img src="https://m.media-amazon.com/images/I/41x4nLWsoUL._AC_.jpg" alt="" class="h-full object-contain">
+                    <img src="https://gifu.visit-town.com/assets/img/top/map_off.jpg" alt="" class="h-full object-contain w-2/5">
+                    <p class="mx-4 block text-center w-1/5" >&</p>
+                    <img src="https://m.media-amazon.com/images/I/41x4nLWsoUL._AC_.jpg" alt="" class="h-full object-contain w-2/5">
                 </div>
 
             </div>
