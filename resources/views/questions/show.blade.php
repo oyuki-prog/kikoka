@@ -9,22 +9,22 @@
         <div class="max-w-screen-xl mx-auto sm:px-6 lg:px-8">
             <x-errors :errors="$errors" />
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg p-4 sm:px-8">
-                <p class="block text-sm font-bold my-2">{{ $question->title }}</p>
+                <p class="block text-base font-bold my-2">{{ $question->title }}</p>
                 <div class="flex items-center justify-between mb-4 flex-wrap">
                     <div class="flex items-center h-8 flex-1">
                         <img src="{{ $question->user->profile_photo_url }}" alt="" class="w-8 block rounded-full mr-2">
                         <div>
-                            <p class="text-sm block w-full">{{ $question->user->name }}</p>
-                            <p class="text-xs block w-full text-gray-500">{{ $question->elapsed }}</p>
+                            <p class="text-base block w-full">{{ $question->user->name }}</p>
+                            <p class="text-sm block w-full text-gray-500">{{ $question->elapsed }}</p>
                         </div>
                     </div>
                     <div class="h-4 flex items-center mb-2">
                         <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png" alt=""
                             class="h-full object-contain block mr-2">
-                        <p class="text-xs">{{ $question->reward_coin }}</p>
+                        <p class="text-sm">{{ $question->reward_coin }}</p>
                     </div>
                 </div>
-                <p class="text-xs leading-5 block mb-4">{!! nl2br(e($question->body)) !!}</p>
+                <p class="text-sm leading-5 block mb-4">{!! nl2br(e($question->body)) !!}</p>
 
                 @if ($question->answers->count() != 0)
                     <hr class="mt-4">
@@ -43,20 +43,23 @@
                                     <img src="{{ $answer->user->profile_photo_url }}" alt=""
                                         class="w-8 block rounded-full mr-2">
                                     <div>
-                                        <p class="text-sm block w-full">{{ $answer->user->name }}</p>
-                                        <p class="text-xs block w-full text-gray-500">{{ $answer->elapsed }}</p>
+                                        <p class="text-base block w-full">{{ $answer->user->name }}</p>
+                                        <p class="text-sm block w-full text-gray-500">{{ $answer->elapsed }}</p>
                                     </div>
                                 </a>
                             </div>
-                            <p class="text-xs leading-5">{!! nl2br(e($answer->body)) !!}</p>
+                            <p class="text-sm leading-5">{!! nl2br(e($answer->body)) !!}</p>
                         </div>
                     @endforeach
                 @endif
-                @if (Auth::check() && $question->user != Auth::user() && $question->open == true && $answers->where('question_id', $question->id)->where('user_id', Auth::id())->count() == 0)
+                @if (Auth::check() &&
+    $question->user != Auth::user() &&
+    $question->open == true &&
+    $answers->where('question_id', $question->id)->where('user_id', Auth::id())->count() == 0)
                     <form action="{{ route('questions.answers.store', $question) }}" method="POST">
                         @csrf
                         <div class="flex items-center justify-between mb-2">
-                            <label for="body text-sm">回答する</label>
+                            <label for="body text-base">回答する</label>
                             <input type="submit" value="送信"
                                 class="block bg-green-400 hover:bg-green-500 rounded py-1 px-2">
                         </div>

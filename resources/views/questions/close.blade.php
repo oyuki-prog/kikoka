@@ -19,7 +19,7 @@
                         <div class="h-4 flex items-center">
                             <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png" alt=""
                                 class="h-full object-contain block mr-2">
-                            <p class="text-sm" id="reward">{{ $question->reward_coin }}</p>
+                            <p class="text-base" id="reward">{{ $question->reward_coin }}</p>
                         </div>
                     </div>
 
@@ -34,8 +34,8 @@
                                         <img src="{{ $answer->user->profile_photo_url }}" alt=""
                                             class="w-8 block rounded-full mr-2">
                                         <div>
-                                            <p class="text-sm block w-full">{{ $answer->user->name }}</p>
-                                            <p class="text-xs block w-full text-gray-500">{{ $answer->elapsed }}</p>
+                                            <p class="text-base block w-full">{{ $answer->user->name }}</p>
+                                            <p class="text-sm block w-full text-gray-500">{{ $answer->elapsed }}</p>
                                         </div>
                                     </div>
                                     <input type="number" name="user[{{ $answer->user->id }}]"
@@ -45,10 +45,10 @@
                                     <input type="checkbox" id="acd-check{{ $answer->user->id }}"
                                         class="acd-check">
                                     <label
-                                        class="acd-label bg-green-400 rounded hover:bg-green-500 text-sm inline-block w-auto mb-3 py-1 px-2"
+                                        class="acd-label bg-green-400 rounded hover:bg-green-500 text-base inline-block w-auto mb-3 py-1 px-2"
                                         for="acd-check{{ $answer->user->id }}">回答を見る</label>
                                     <div class="acd-content w-full">
-                                        <p class="text-xs">{{ $answer->body }}</p>
+                                        <p class="text-sm">{{ $answer->body }}</p>
                                     </div>
                                 </div>
                             </div>
@@ -61,8 +61,7 @@
         </div>
     </div>
     @can('update', $question)
-        <div
-            class="h-16 fixed bottom-0 w-full bg-green-200 mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <div class="h-16 fixed bottom-0 w-full bg-green-200 mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
             <div class="flex items-center h-8 max-w-screen-xl">
                 <p class="block text-base">残り</p>
                 <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png" alt=""

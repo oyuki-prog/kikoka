@@ -17,21 +17,21 @@
                                 <img src="{{ $question->user->profile_photo_url }}" alt=""
                                     class="h-8 w-8 rounded-full block mr-2">
                                 <div class="h-8">
-                                    <p class="block text-sm">{{ $question->user->name }}<span
-                                            class="text-xs text-gray-500 hidden">さんの質問</span></p>
-                                    <p class="block text-xs text-gray-500">{{ $question->elapsed }}</p>
+                                    <p class="block text-base">{{ $question->user->name }}<span
+                                            class="text-sm text-gray-500 hidden">さんの質問</span></p>
+                                    <p class="block text-sm text-gray-500">{{ $question->elapsed }}</p>
                                 </div>
                             </a>
                             <div class="flex items-center justify-between h-8 sm:ml-4">
                                 <div class="h-4 flex items-center">
                                     <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png"
                                         alt="" class="w-4 h-full object-contain block mr-1">
-                                    <p class="block text-sm">{{ $question->reward_coin }}</p>
+                                    <p class="block text-base">{{ $question->reward_coin }}</p>
                                 </div>
                             </div>
                         </div>
                         <a href="{{ route('questions.show', $question) }}"
-                            class="text-sm font-bold">{{ $question->title }}</a>
+                            class="text-base font-bold">{{ $question->title }}</a>
                     </div>
                 @endforeach
                 <div class="mt-8">
