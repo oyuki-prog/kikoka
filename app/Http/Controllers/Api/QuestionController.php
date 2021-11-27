@@ -16,7 +16,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::with('user')->where('open', true)->orderBy('reward_coin', 'DESC')->simplePaginate(15);
+        $questions = Question::with('user')->where('open', true)->orderBy('reward_coin', 'ASC')->simplePaginate(15);
         $questions->load(['user']);
         return response()->json(['questions' => $questions], HttpFoundationResponse::HTTP_OK);
     }
@@ -29,7 +29,19 @@ class QuestionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = $request->user();
+        $question = new Question();
+        $question->title = $request->title;
+        $question->body = $request->body;
+        $question->due_date = $request->due_date;
+        $question->reward_coin = $request->reward_coin;
+        $question->urgent = $request->urgent;
+        $question->user_id = $user->id;
+        $user->coin -= $request->coin;
+        $question->save();
+        $user->save();
+        $question->load(['user']);
+        return response()->json(['question' => $question], HttpFoundationResponse::HTTP_OK);
     }
 
     /**

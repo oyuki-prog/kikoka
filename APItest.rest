@@ -45,3 +45,19 @@ Authorization: Bearer 30|mlC7rOlLKoosPxy7kQMBvWg0Dh6IUNUOFAyf5762
 {
     "body": "これで解決"
 }
+
+###
+
+# questions store
+POST /api/questions
+Host: localhost
+Content-Type: application/json
+Authorization: Bearer 35|rIfvWJADpcrTaH3VEPa7JYdKUBrE9bZvhLbTpWss
+
+{
+    "title": "どうしてなの？",
+    "body": "どうしてあなたはロミオなの？",
+    "due_date": "2021-12-01 00:00:00",
+    "reward_coin": 1000,
+    "urgent": 1
+}

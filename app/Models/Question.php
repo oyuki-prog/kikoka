@@ -14,6 +14,7 @@ class Question extends Model
         'title',
         'body',
         'reward_coin',
+        'due_date',
         'urgent'
     ];
 
