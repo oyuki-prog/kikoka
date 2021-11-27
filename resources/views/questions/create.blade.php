@@ -26,9 +26,9 @@
                             <label for="due_date">回答締め切り</label>
                             <div class="flex items-center justify-between">
                                 <input type="date" name="due_date" id="due_date" value="{{ old('due_date') }}"
-                                    required class="rounded border-gray-400">
+                                    required class="rounded border-gray-400 block">
                                 <input type="time" name="due_time" value="{{ old('due_time') }}" required
-                                    class="rounded border-gray-400">
+                                    class="rounded border-gray-400 block">
                             </div>
                         </div>
                         <div class="mb-4">
