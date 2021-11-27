@@ -62,8 +62,8 @@
     </div>
     @can('update', $question)
         <div
-            class="h-16 fixed bottom-0 w-full bg-green-200 max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-            <div class="flex items-center h-8">
+            class="h-16 fixed bottom-0 w-full bg-green-200 mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <div class="flex items-center h-8 max-w-screen-xl">
                 <p class="block text-base">残り</p>
                 <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png" alt=""
                     class="h-8 object-contain block mr-2">

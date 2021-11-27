@@ -17,6 +17,10 @@ class Question extends Model
         'urgent'
     ];
 
+    protected $appends = [
+        'elapsed'
+    ];
+
     public function user() {
         return $this->belongsTo(User::class);
     }

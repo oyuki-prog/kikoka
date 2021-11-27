@@ -34,6 +34,10 @@
                             class="text-sm font-bold">{{ $question->title }}</a>
                     </div>
                 @endforeach
+                <div class="mt-8">
+                    {{ $questions->links() }}
+
+                </div>
             </div>
         </div>
     </div>

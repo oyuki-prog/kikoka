@@ -20,19 +20,19 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::with('user')->where('open', true)->orderBy('reward_coin', 'DESC')->simplePaginate(10);
+        $questions = Question::with('user')->where('open', true)->orderBy('reward_coin', 'DESC')->simplePaginate(15);
         return view('questions.index', compact('questions'));
     }
 
     public function new()
     {
-        $questions = Question::with('user')->where('open', true)->orderBy('created_at', 'DESC')->simplePaginate(10);
+        $questions = Question::with('user')->where('open', true)->orderBy('created_at', 'DESC')->simplePaginate(15);
         return view('questions.index', compact('questions'));
     }
 
     public function popular()
     {
-        $questions = Question::withCount('answers')->where('open', true)->orderBy('answers_count', 'DESC')->simplePaginate(10);
+        $questions = Question::withCount('answers')->where('open', true)->orderBy('answers_count', 'DESC')->simplePaginate(15);
         return view('questions.index', compact('questions'));
     }
 

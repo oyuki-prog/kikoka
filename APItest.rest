@@ -1,0 +1,47 @@
+# register
+POST /api/register
+Host: localhost
+Content-Type: application/json
+
+{
+    "name": "1",
+    "email": "1@1",
+    "password": "password"
+}
+###
+
+# login
+POST /api/login
+Host: localhost
+Content-Type: application/json
+
+{
+    "email": "1@1",
+    "password": "password"
+}
+
+###
+
+# questions index
+GET /api/questions
+Host: localhost
+Content-Type: application/json
+
+###
+
+# questions show
+GET /api/questions/1
+Host: localhost
+Content-Type: application/json
+
+###
+
+# questions answers store
+POST /api/questions/1/answers
+Host: localhost
+Content-Type: application/json
+Authorization: Bearer 30|mlC7rOlLKoosPxy7kQMBvWg0Dh6IUNUOFAyf5762
+
+{
+    "body": "これで解決"
+}
