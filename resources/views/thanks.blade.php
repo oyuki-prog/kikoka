@@ -14,7 +14,6 @@
             <x-errors :errors="$errors" />
             <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg py-8 px-4">
                 <p>いつもたくさんの人の質問に答えてくれてありがとう</p>
-                <p>ギフトカードはお礼の証！</p>
                 <p>お待ちかねの岐阜とカードだよ</p>
 
                 <div class="h-80 flex items-center w-full">
