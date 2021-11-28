@@ -16,8 +16,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::with('user')->where('open', true)->orderBy('reward_coin', 'ASC')->simplePaginate(15);
-        
+        $questions = Question::with('user')->where('open', true)->orderBy('reward_coin', 'ASC')->simplePaginate(5);
         $questions->load(['user']);
         return response()->json(['questions' => $questions], HttpFoundationResponse::HTTP_OK);
     }
