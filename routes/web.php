@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnswerController;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\UserController;
 use App\Models\Answer;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -19,7 +20,7 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 */
 
 Route::get('/', function () {
-    return redirect()->route('questions.index');
+    return view('welcome');
 });
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
@@ -29,6 +30,12 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])
 ->get('/dashboard', [UserController::class, 'show']
 )->name('dashboard');
+
+Route::get('questions/new', [QuestionController::class, 'new'])
+    ->name('questions.new');
+
+Route::get('questions/popular', [QuestionController::class, 'popular'])
+    ->name('questions.popular');
 
 Route::resource('questions', QuestionController::class)
     ->middleware('auth')
@@ -52,3 +59,22 @@ Route::resource('questions.answers', AnswerController::class)
 Route::get('purchase', [PurchaseController::class, 'purchase'])
     ->middleware('auth')
     ->name('purchase');
+
+Route::patch('purchase', [PurchaseController::class, 'buy'])
+    ->middleware('auth')
+    ->name('buy');
+
+Route::get('giftcard', [PurchaseController::class, 'giftcard'])
+    ->middleware('auth')
+    ->name('giftcard');
+
+Route::patch('giftcard', [PurchaseController::class, 'exchange'])
+    ->middleware('auth')
+    ->name('exchange');
+
+Route::get('thanks', [PurchaseController::class, 'thanks'])
+    ->middleware('auth')
+    ->name('thanks');
+
+Route::get('user/{user}', [UserController::class, 'show'])
+    ->name('user.show');

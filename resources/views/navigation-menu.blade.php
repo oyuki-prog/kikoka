@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 fixed w-full top-0">
     <!-- Primary Navigation Menu -->
     <div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -9,14 +9,22 @@
                         <x-jet-application-mark class="block h-9 w-auto" />
                     </a>
                 </div>
-                @if (Auth::check())
-                    <!-- Navigation Links -->
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                            {{ __('Dashboard') }}
-                        </x-jet-nav-link>
-                    </div>
-                @endif
+
+                <!-- Navigation Links -->
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                    <x-jet-nav-link href="{{ route('questions.index') }}"
+                        :active="request()->routeIs('questions.index')">
+                        {{ __('急募') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('questions.new') }}" :active="request()->routeIs('questions.new')">
+                        {{ __('新着') }}
+                    </x-jet-nav-link>
+                    <x-jet-nav-link href="{{ route('questions.popular') }}"
+                        :active="request()->routeIs('questions.popular')">
+                        {{ __('人気') }}
+                    </x-jet-nav-link>
+                </div>
+
             </div>
 
             <div class="hidden sm:flex sm:items-center sm:ml-6">
@@ -24,8 +32,8 @@
                     <div class="flex items-center">
                         <a href="{{ route('purchase') }}" class="block flex items-center">
                             <div class="w-4 h-4">
-                                <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
-                                    class="w-full h-full object-contain block">
+                                <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png"
+                                    alt="" class="w-full h-full object-contain block">
                             </div>
                             <p class="block ml-2">{{ Auth::user()->coin }}</p>
                         </a>
@@ -38,7 +46,7 @@
                             <x-slot name="trigger">
                                 @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())
                                     <button
-                                        class="flex text-sm border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
+                                        class="flex text-base border-2 border-transparent rounded-full focus:outline-none focus:border-gray-300 transition">
                                         <img class="h-8 w-8 rounded-full object-cover"
                                             src="{{ Auth::user()->profile_photo_url }}"
                                             alt="{{ Auth::user()->name }}" />
@@ -47,7 +55,7 @@
                                 @else
                                     <span class="inline-flex rounded-md">
                                         <button type="button"
-                                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
+                                            class="inline-flex items-center px-3 py-2 border border-transparent text-base leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition">
                                             {{ Auth::user()->name }}
 
                                             <svg class="ml-2 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg"
@@ -63,12 +71,16 @@
 
                             <x-slot name="content">
                                 <!-- Account Management -->
-                                <div class="block px-4 py-2 text-xs text-gray-400">
+                                <div class="block px-4 py-2 text-sm text-gray-400">
                                     {{ __('Manage Account') }}
                                 </div>
 
                                 <x-jet-dropdown-link href="{{ route('profile.show') }}">
                                     {{ __('Profile') }}
+                                </x-jet-dropdown-link>
+
+                                <x-jet-dropdown-link href="{{ route('giftcard') }}">
+                                    {{ __('ギフトカード') }}
                                 </x-jet-dropdown-link>
 
                                 @if (Laravel\Jetstream\Jetstream::hasApiFeatures())
@@ -90,6 +102,11 @@
                             </x-slot>
                         </x-jet-dropdown>
                     </div>
+                @else
+                    <a href="{{ route('login') }}"
+                        class="inline-flex items-center px-4 py-2 bg-gray-800 border border-transparent rounded-md font-semibold text-sm text-white uppercase tracking-widest hover:bg-gray-700 active:bg-gray-900 focus:outline-none focus:border-gray-900 focus:ring focus:ring-gray-300 disabled:opacity-25 transition'">
+                        {{ __('Log in') }}
+                    </a>
                 @endif
             </div>
 
@@ -97,11 +114,13 @@
             <div class="-mr-2 flex items-center sm:hidden">
                 @if (Auth::check())
                     <div class="flex items-center">
-                        <div class="w-4 h-4">
-                            <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
-                                class="w-full h-full object-contain block mr-2">
-                        </div>
-                        <p class="block text-sm">{{ Auth::user()->coin }}</p>
+                        <a href="{{ route('purchase') }}" class="block flex items-center">
+                            <div class="w-4 h-4">
+                                <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png"
+                                    alt="" class="w-full h-full object-contain block">
+                            </div>
+                            <p class="block ml-2">{{ Auth::user()->coin }}</p>
+                        </a>
                     </div>
                 @endif
                 <button @click="open = ! open"
@@ -120,11 +139,33 @@
 
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
-        <div class="pt-2 pb-3 space-y-1">
-            <x-jet-responsive-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
-            </x-jet-responsive-nav-link>
-        </div>
+        @if (Auth::check())
+            <div class="pt-2 pb-3 space-y-1">
+                <x-jet-responsive-nav-link href="{{ route('questions.index') }}"
+                    :active="request()->routeIs('questions.index')">
+                    {{ __('急募の質問') }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ route('questions.new') }}"
+                    :active="request()->routeIs('questions.new')">
+                    {{ __('新着の質問') }}
+                </x-jet-responsive-nav-link>
+                <x-jet-responsive-nav-link href="{{ route('questions.popular') }}"
+                    :active="request()->routeIs('questions.popular')">
+                    {{ __('人気の質問') }}
+                </x-jet-responsive-nav-link>
+            </div>
+        @else
+            <div class="pt-2 pb-3 space-y-1">
+                <x-jet-responsive-nav-link href="{{ route('login') }}" :active="request()->routeIs('login')">
+                    {{ __('ログイン') }}
+                </x-jet-responsive-nav-link>
+            </div>
+            <div class="pt-2 pb-3 space-y-1">
+                <x-jet-responsive-nav-link href="{{ route('register') }}" :active="request()->routeIs('register')">
+                    {{ __('新規登録') }}
+                </x-jet-responsive-nav-link>
+            </div>
+        @endif
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200">
@@ -139,7 +180,7 @@
 
                     <div>
                         <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                        <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                        <div class="font-medium text-base text-gray-500">{{ Auth::user()->email }}</div>
                     </div>
                 </div>
 
@@ -148,6 +189,11 @@
                     <x-jet-responsive-nav-link href="{{ route('profile.show') }}"
                         :active="request()->routeIs('profile.show')">
                         {{ __('Profile') }}
+                    </x-jet-responsive-nav-link>
+
+                    <x-jet-responsive-nav-link href="{{ route('giftcard') }}"
+                        :active="request()->routeIs('giftcard')">
+                        {{ __('ギフトカード') }}
                     </x-jet-responsive-nav-link>
 
                     @if (Laravel\Jetstream\Jetstream::hasApiFeatures())

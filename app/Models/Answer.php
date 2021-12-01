@@ -10,6 +10,10 @@ class Answer extends Model
 {
     use HasFactory;
 
+    protected $appends = [
+        'elapsed'
+    ];
+
     public function user() {
         return $this->belongsTo(User::class);
     }

@@ -14,7 +14,12 @@ class Question extends Model
         'title',
         'body',
         'reward_coin',
+        'due_date',
         'urgent'
+    ];
+
+    protected $appends = [
+        'elapsed'
     ];
 
     public function user() {

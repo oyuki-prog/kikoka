@@ -20,7 +20,19 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        $questions = Question::with('user')->where('open', true)->orderBy('reward_coin', 'DESC')->simplePaginate(10);
+        $questions = Question::with('user')->where('open', true)->orderBy('reward_coin', 'DESC')->simplePaginate(15);
+        return view('questions.index', compact('questions'));
+    }
+
+    public function new()
+    {
+        $questions = Question::with('user')->where('open', true)->orderBy('created_at', 'DESC')->simplePaginate(15);
+        return view('questions.index', compact('questions'));
+    }
+
+    public function popular()
+    {
+        $questions = Question::withCount('answers')->where('open', true)->orderBy('answers_count', 'DESC')->simplePaginate(15);
         return view('questions.index', compact('questions'));
     }
 
@@ -42,16 +54,20 @@ class QuestionController extends Controller
      */
     public function store(StoreQuestionRequest $request)
     {
-        if (Auth::user()->coin < $request->reward_coin * 1.1) {
+        if ($request->urgent == 1) {
+            $multiple = 1.2;
+        } else {
+            $multiple = 1.1;
+        }
+        if (Auth::user()->coin < $request->reward_coin * $multiple) {
             return back()->withInput()->withErrors(['error' => 'コインの設定額が所持コインを上回っています']);
         }
-
         $question = new Question($request->all());
         $question->user_id = Auth::id();
         $question->due_date = $request->due_date . ':00';
 
         $user = User::find(Auth::id());
-        $user->coin -= $request->reward_coin * 1.1;
+        $user->coin -= $request->reward_coin * $multiple;
         DB::beginTransaction();
         try {
             $question->save();

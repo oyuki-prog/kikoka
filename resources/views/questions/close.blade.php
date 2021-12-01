@@ -17,13 +17,13 @@
                     <div class="flex items-center justify-between mb-4">
                         <h1>解答者一覧</h1>
                         <div class="h-4 flex items-center">
-                            <img src="{{ Storage::url('/default_image/coin.png') }}" alt=""
+                            <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png" alt=""
                                 class="h-full object-contain block mr-2">
-                            <p class="text-sm">{{ $question->reward_coin }}</p>
+                            <p class="text-base" id="reward">{{ $question->reward_coin }}</p>
                         </div>
                     </div>
 
-                    <form action="{{ route('questions.divide', $question) }}" method="POST">
+                    <form action="{{ route('questions.divide', $question) }}" method="POST" id="form">
                         @csrf
                         @method('PATCH')
 
@@ -34,8 +34,8 @@
                                         <img src="{{ $answer->user->profile_photo_url }}" alt=""
                                             class="w-8 block rounded-full mr-2">
                                         <div>
-                                            <p class="text-sm block w-full">{{ $answer->user->name }}</p>
-                                            <p class="text-xs block w-full text-gray-500">{{ $answer->elapsed }}</p>
+                                            <p class="text-base block w-full">{{ $answer->user->name }}</p>
+                                            <p class="text-sm block w-full text-gray-500">{{ $answer->elapsed }}</p>
                                         </div>
                                     </div>
                                     <input type="number" name="user[{{ $answer->user->id }}]"
@@ -45,21 +45,34 @@
                                     <input type="checkbox" id="acd-check{{ $answer->user->id }}"
                                         class="acd-check">
                                     <label
-                                        class="acd-label bg-green-400 rounded hover:bg-green-500 text-sm inline-block w-auto mb-3 py-1 px-2"
+                                        class="acd-label bg-green-400 rounded hover:bg-green-500 text-base inline-block w-auto mb-3 py-1 px-2"
                                         for="acd-check{{ $answer->user->id }}">回答を見る</label>
                                     <div class="acd-content w-full">
-                                        <p class="text-xs">{{ $answer->body }}</p>
+                                        <p class="text-sm">{{ $answer->body }}</p>
                                     </div>
                                 </div>
                             </div>
                         @endforeach
 
-                        @can('update', $question)
-                            <input type="submit" value="分配する">
-                        @endcan
+
                     </form>
                 </div>
             </div>
         </div>
     </div>
+    @can('update', $question)
+        <div class="h-16 fixed bottom-0 w-full bg-green-200 mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+            <div class="flex items-center h-8 max-w-screen-xl">
+                <p class="block text-base">残り</p>
+                <img src="https://illust8.com/wp-content/uploads/2018/11/gold-coin_illust_2205.png" alt=""
+                    class="h-8 object-contain block mr-2">
+                <p id="SumTotal" class="text-base">{{ $question->reward_coin }}</p>
+            </div>
+            <input type="submit" value="確定" form="form" class="block bg-blue-300 hover:bg-blue-400 px-2 py-1 rounded">
+        </div>
+    @endcan
+
+    <x-slot name="js">
+        <script src="{{ mix('js/total.js') }}"></script>
+    </x-slot>
 </x-app-layout>
